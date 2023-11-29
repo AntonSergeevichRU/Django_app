@@ -1,0 +1,86 @@
+[
+  {
+    "model": "shop_app.product",
+    "pk": 1,
+    "fields": {
+      "name": "╦шяЄюэ ўрщ",
+      "description": "╫Єю Єю яЁю ышяЄюэ ўрщ",
+      "price": "5.00",
+      "discount": 3,
+      "created_in": "2023-07-31T08:32:50.046Z",
+      "archived": false,
+      "created_by": 1,
+      "preview": ""
+    }
+  },
+  {
+    "model": "shop_app.product",
+    "pk": 2,
+    "fields": {
+      "name": "└їьрЄ",
+      "description": "╫Єю Єю яЁю рїьрЄ ўрщ",
+      "price": "7.00",
+      "discount": 5,
+      "created_in": "2023-07-31T08:33:06.442Z",
+      "archived": false,
+      "created_by": 1,
+      "preview": ""
+    }
+  },
+  {
+    "model": "shop_app.product",
+    "pk": 3,
+    "fields": {
+      "name": "└чхЁ ўрщ",
+      "description": "╫Єю Єю яЁю рчхЁ ўрщ",
+      "price": "10.00",
+      "discount": 7,
+      "created_in": "2023-07-31T08:38:06.523Z",
+      "archived": true,
+      "created_by": 1,
+      "preview": ""
+    }
+  },
+  {
+    "model": "shop_app.product",
+    "pk": 4,
+    "fields": {
+      "name": "╫рщ ёючфры ╒└═",
+      "description": "ю ўрх їрэр",
+      "price": "6.00",
+      "discount": 15,
+      "created_in": "2023-07-31T09:21:12.417Z",
+      "archived": false,
+      "created_by": 2,
+      "preview": ""
+    }
+  },
+  {
+    "model": "shop_app.product",
+    "pk": 5,
+    "fields": {
+      "name": "ўрщ їрэ2",
+      "description": "яЁю ўрщ їрэ2",
+      "price": "15.00",
+      "discount": 10,
+      "created_in": "2023-07-31T09:31:04.198Z",
+      "archived": true,
+      "created_by": 2,
+      "preview": ""
+    }
+  },
+  {
+    "model": "shop_app.product",
+    "pk": 7,
+    "fields": {
+      "name": "aaaaaaaaaaaaaaaa",
+      "description": "dsfdsfdsfgdsfgdsf",
+      "price": "5.00",
+      "discount": 44,
+      "created_in": "2023-08-02T13:36:36.754Z",
+      "archived": false,
+      "created_by": 3,
+      "preview": ""
+    }
+  }
+]

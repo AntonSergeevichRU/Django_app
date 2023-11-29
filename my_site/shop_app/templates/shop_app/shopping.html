@@ -1,0 +1,21 @@
+{% extends 'shop_app/basa.html' %}
+
+{% block title %}
+    SHOP
+{% endblock %}
+
+
+{% block body %}
+
+    <h2>Возможные действия:</h2>
+    <h3>Вы можете посмотреть список продуктов (добавив products/)</h3>
+    <h3>Вы можете посмотреть список заказов (добавив order/)</h3>
+
+    <p>
+    <strong>
+        You have {{ items }} item{{ items|pluralize }}
+    </strong>
+    </p>
+{% endblock %}
+
+

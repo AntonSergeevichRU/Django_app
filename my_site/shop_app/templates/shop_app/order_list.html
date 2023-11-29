@@ -1,0 +1,44 @@
+{% extends 'shop_app/basa.html' %}
+
+{% block title %}
+    Список заказов
+{% endblock %}
+
+{% block body %}
+    <h2>Список заказов:</h2>
+    {% if Orders %}
+        <div>
+            {% for order in Orders %}
+                <p><a href="{% url 'shop_app:order_detail' pk=order.pk %}">Заказ № {{ order.pk }}</a></p>
+                <div>Заказал:
+                    <a href="{% url 'shop_app:user_orders' user_id=order.user_id %}">{% firstof order.user.first_name order.user.username %}</a>
+                </div>
+                <div>Промокод: {{ order.promocode }}</div>
+                <div>Адрес доставки: {{ order.delivery_address }}</div>
+                <div>
+                    Продукты заказа:
+                    <ul>
+                        {% for product in order.products.all %}
+                            <li>
+                                {{ product.name }} по {{ product.price }} рублей.
+                            </li>
+
+                        {% endfor %}
+
+                </ul>
+            </div>
+            <p></p>
+
+        {% endfor %}
+
+
+        </div>
+    {% else %}
+        <h2>Нет заказов</h2>
+
+    {% endif %}
+
+     <p><a href="{% url 'shop_app:create_order' %}">Создать заказ</a></p>
+
+
+{% endblock %}

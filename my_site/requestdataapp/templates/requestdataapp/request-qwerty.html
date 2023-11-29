@@ -1,0 +1,16 @@
+{% extends 'requestdataapp/basa_req.html' %}
+
+{% block title %}
+    Demo request params
+{% endblock %}
+
+{% block body %}
+<h2> hello {% firstof request.GET.name 'User' %} </h2>
+    <div>
+    <pre>
+        a = '{{ a }}'
+        b = '{{ b }}'
+        result = '{{ RESULT }}'
+    </pre>
+    </div>
+{% endblock %}

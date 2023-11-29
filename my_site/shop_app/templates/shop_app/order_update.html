@@ -1,0 +1,23 @@
+{% extends 'shop_app/basa.html' %}
+
+{% block title %}
+    Обновление заказа №{{ object.pk }}
+{% endblock %}
+
+{% block body %}
+    <h2>Обновление заказа №{{ object.pk }}</h2>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">Обновить</button>
+        </form>
+
+
+    <p><a href="{% url 'shop_app:order_list' %}">Вернуться к списку заказов</a></p>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'my_auth/basa.html' %}
+
+{% block title %}
+    About_Profile
+{% endblock %}
+
+{% block body %}
+    <h2>Информация о пользователе:</h2>
+
+        <h3>Детали:</h3>
+        <div>Пользователь: {{ Profile.user.username}}</div>
+        <div>Аватарка:</div>
+
+            {% if Profile.avatar %}
+                <img src="{{ Profile.avatar.url }}" alt="{{ Profile.avatar.name }}">
+            {% else %}
+            <div>Нет аваторки</div>
+            {% endif %}
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Загрузить</button>
+        </form>
+
+        <div>Имя: {{ Profile.user.first_name }}</div>
+        <div>Фамилия: {{ Profile.user.last_name }}</div>
+        <div>Email: {{ Profile.user.email }}</div>
+        <div>Bio: {{ Profile.bio }}</div>
+
+    {% if perms.my_auth.change_profile %}
+        <p><a href="{% url 'my_auth:user_update' pk=Profile.id %}">Обновить информацию</a></p>
+    {% endif %}
+    <p><a href="{% url 'my_auth:user_list' %}">Список всех пользователей</a></p>
+
+{% endblock %}

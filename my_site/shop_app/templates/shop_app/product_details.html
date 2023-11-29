@@ -1,0 +1,70 @@
+{% extends 'shop_app/basa.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% translate 'Product' %}№{{ Products.pk}}
+{% endblock %}
+
+{% block body %}
+    <h2>{% translate 'Product' %}<strong>{{ Products.name }}</strong></h2>
+    <div>
+        <div>{% translate 'Description' %}:<em>{{ Products.description }}</em></div>
+        <div>{% translate 'Price' %}: {{ Products.price }}</div>
+        <div>{% translate 'Discount' %}: {{ Products.discount }}</div>
+        <div>{% translate 'Created_by' %}: {{ Products.created_by }}</div>
+            {% if Products.preview %}
+                <img src="{{ Products.preview.url }}" alt="{{ products.preview.name }}">
+            {% endif %}
+        <p>{% translate 'Archived' %}: {{ Products.archived }}</p>
+
+
+        <h2>{% translate 'Images' %}:</h2>
+
+            <p>
+            {% blocktranslate count count_images=Products.images.all|length %}
+                There is one image
+            {% plural %}
+                There are {{ count_images }} images
+            {% endblocktranslate %}
+            </p>
+
+            {% for imag in Products.images.all %}
+                <div>
+                    <img src="{{ imag.image.url }}" alt="{{ imag.image.name }}">
+                    <div>
+                        {{  imag.discription_image }}
+                    </div>
+                </div>
+            {% empty %}
+            <div>{% translate 'No images' %}</div>
+            {% endfor %}
+        <p></p>
+
+    </div>
+    <div>
+        {% url 'shop_app:products_list' as list_product_url %}
+        {% blocktranslate %}
+            <a href={{ list_product_url }}>Back list products</a>
+        {% endblocktranslate %}
+    </div>
+    {% if perms.shop_app.change_product %}
+    <div>
+        {% url 'shop_app:product_update' pk=Products.pk as update_product_url %}
+        {% blocktranslate %}
+            <a href={{ update_product_url }}>Update product</a>
+        {% endblocktranslate %}
+    </div>
+    {% endif %}
+    {% if perms.shop_app.delete_product %}
+    <div>
+        {% url 'shop_app:product_delete' pk=Products.pk as archive_product_url %}
+        {% blocktranslate %}
+            <a href={{ archive_product_url }}>Add a product to the archive</a>
+        {% endblocktranslate %}
+
+    </div>
+    {% endif %}
+
+
+    <p></p>
+{% endblock %}

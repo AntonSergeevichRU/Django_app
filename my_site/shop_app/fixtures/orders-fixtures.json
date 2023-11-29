@@ -1,0 +1,33 @@
+[
+  {
+    "model": "shop_app.order",
+    "pk": 1,
+    "fields": {
+      "delivery_address": "СССР ул.Ленина д.2",
+      "promocode": "",
+      "created_in": "2023-07-31T14:01:14.286Z",
+      "user": 2,
+      "products": [
+        3,
+        2,
+        1
+      ]
+    }
+  },
+  {
+    "model": "shop_app.order",
+    "pk": 2,
+    "fields": {
+      "delivery_address": "что то куда то закажем",
+      "promocode": "путин",
+      "created_in": "2023-08-10T13:19:48.268Z",
+      "user": 3,
+      "products": [
+        7,
+        3,
+        2,
+        1
+      ]
+    }
+  }
+]

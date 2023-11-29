@@ -1,0 +1,22 @@
+{% extends 'shop_app/basa.html' %}
+
+{% block title %}
+    Удаление заказа
+{% endblock %}
+
+{% block body %}
+    <h2>Уверены ли вы что хотите удалить заказ {{ object.pk }}?</h2>
+    <br>
+    <div>
+        <a href="{% url 'shop_app:order_detail' pk=object.pk %}">Вернуться к заказу № {{ object.pk }}</a>
+    </div>
+    <br>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Удалить</button>
+            <p></p>
+        </form>
+    </div>
+{% endblock %}

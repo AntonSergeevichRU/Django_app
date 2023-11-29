@@ -1,0 +1,29 @@
+{% extends 'blogapp/basa.html' %}
+
+{% block title %}
+   Article №{{ object.pk }}
+{% endblock %}
+
+{% block body %}
+    <h2>Article №{{ object.pk }}</h2>
+    <p>
+    <li>Заголовок статьи: {{ object.title }}</li>
+             <li>Дата публикации: {{ object.pub_date }}</li>
+             <li>Имя автора: {{ object.author.name }}</li>
+             <li>Название категории: {{ object.category.name }}</li>
+             <li>Список тегов:
+                 {% for tag in object.tags.all %}
+                     {% if forloop.last %}
+                         {{ tag.name }}
+                     {% else %}
+                         {{ tag.name }}{{ ',' }}
+                     {% endif %}
+                 {% endfor %}
+
+             </li>
+    </p>
+
+    <a href="{% url "blog:articles" %}">Назад</a>
+
+{% endblock %}
+

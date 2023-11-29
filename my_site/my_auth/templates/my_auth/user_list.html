@@ -1,0 +1,30 @@
+{% extends 'my_auth/basa.html' %}
+
+{% block title %}
+    UserList
+{% endblock %}
+
+{% block body %}
+    <h3>Список пользователей:</h3>
+    {% if Users %}
+    <div>
+    {%for user in Users %}
+        <a href="{% url 'my_auth:user_detail' pk=user.profile.pk %}">Пользователь: {{ user.username }}</a>
+
+{#        <div>Аватарка:</div>#}
+{#        {% if user.profile.avatar %}#}
+{#            <img src="{{ user.profile.avatar.url }}" alt="{{ user.profile.avatar.name }}">#}
+{#        {% else %}#}
+{#            <div>Нет аваторки</div>#}
+{#        {% endif %}#}
+    <div>Имя: {{ user.first_name }}</div>
+    <div>Фамилия: {{ user.last_name }}</div>
+    <div>Email: {{ user.email }}</div>
+    <div>Bio: {{ user.profile.bio }}</div>
+
+    </div>
+    <p></p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+

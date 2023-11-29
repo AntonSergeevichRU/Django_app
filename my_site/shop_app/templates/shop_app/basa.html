@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        Basa shopp
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+    {% block  body %}
+    <h1>Тут что то будет</h1>
+    {% endblock %}
+</body>
+
+<div>
+    Время: {% now "H:i "%}
+</div>
+
+<div>
+    Дата: {% now "d.m.Y"%}
+</div>
+
+</html>

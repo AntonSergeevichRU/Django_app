@@ -1,0 +1,40 @@
+{% extends 'requestdataapp/basa_req.html' %}
+
+{% block title %}
+    User BIO
+{% endblock %}
+
+{% block body %}
+    <h3>User form</h3>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type='submit'>
+                submit
+            </button>
+        </form>
+    </div>
+
+    {% if request.POST %}
+        <div>
+        <h2>Previons form data:</h2>
+        <table>
+            <tr>
+                <td>Full name</td>
+                <td>{{ request.POST.name }}</td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td>{{ request.POST.age }}</td>
+            </tr>
+            <tr>
+                <td>BIO</td>
+                <td>{{ request.POST.bio }}</td>
+            </tr>
+        </table>
+        </div>
+
+    {% endif %}
+
+{% endblock %}

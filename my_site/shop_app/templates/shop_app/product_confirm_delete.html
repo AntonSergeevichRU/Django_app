@@ -1,0 +1,22 @@
+{% extends 'shop_app/basa.html' %}
+
+{% block title %}
+    Архив продукта
+{% endblock %}
+
+{% block body %}
+    <h2>Уверены ли вы что хотите поместить в архив {{ object.name }}?</h2>
+    <br>
+    <div>
+        <a href="{% url 'shop_app:products_details' pk=object.pk %}">Вернуться к продукту № {{ object.pk }}</a>
+    </div>
+    <br>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">В архив</button>
+            <p></p>
+        </form>
+    </div>
+{% endblock %}

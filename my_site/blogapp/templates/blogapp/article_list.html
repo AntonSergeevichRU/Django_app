@@ -1,0 +1,38 @@
+{% extends 'blogapp/basa.html' %}
+
+
+{% block title %}
+    Article
+{% endblock %}
+
+{% block body %}
+     {% if object_list %}
+         <h2>Список статей:</h2>
+         <p></p>
+
+         {% for obj in object_list %}
+             <h3><a href="{% url 'blog:article' pk=obj.pk %}">Статья № {{ obj.pk }}</a></h3>
+             <li>Заголовок статьи: {{ obj.title }}</li>
+             <li>Дата публикации: {{ obj.pub_date }}</li>
+             <li>Имя автора: {{ obj.author.name }}</li>
+             <li>Название категории: {{ obj.category.name }}</li>
+             <li>Список тегов:
+                 {% for tag in obj.tags.all %}
+                     {% if forloop.last %}
+                         {{ tag.name }}
+                     {% else %}
+                         {{ tag.name }}{{ ',' }}
+                     {% endif %}
+                 {% endfor %}
+
+             </li>
+             <hr>
+             <p></p>
+         {% endfor %}
+     {% else %}
+         <h3>Нет статей для публикации</h3>
+
+     {% endif %}
+{% endblock %}
+
+

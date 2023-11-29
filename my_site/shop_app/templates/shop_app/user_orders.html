@@ -1,0 +1,40 @@
+{% extends 'shop_app/basa.html' %}
+{% load cache %}
+
+{% block title %}
+    user_orders
+{% endblock %}
+
+{% block body %}
+    <h2>Пользователь {{ user.username }}</h2>
+    {% if user_orders %}
+        <h2>Пользователь {{ owner }} выполнил следующие заказы:</h2>
+        {% cache 60 user.username owner %}
+            {% for order in user_orders %}
+
+
+                <div><a href="{% url 'shop_app:order_detail' pk=order.pk %}">Заказ № {{ order.pk }}</a></div>
+                <div>
+                    Продукты заказа:
+                    <div>
+                        {% for product in order.products.all %}
+                            <li>
+                                {{ product.name }} по {{ product.price }} рублей.
+                            </li>
+                        {% endfor %}
+                    </div>
+                </div>
+                <hr>
+
+            {% endfor %}
+        {% endcache %}
+    {% else %}
+        <h2>У пользователя {{ owner }} ещё нет заказов</h2>
+
+    {% endif %}
+
+    <p>
+        <a href="{% url 'shop_app:order_list' %}">Возврат к списку заказов</a>
+    </p>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'requestdataapp/basa_req.html' %}
+
+{% block title %}
+    File upload
+{% endblock %}
+
+{% block body %}
+    <h2>Upload file</h2>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button type="submit">upload</button>
+
+    </form>
+{% endblock %}

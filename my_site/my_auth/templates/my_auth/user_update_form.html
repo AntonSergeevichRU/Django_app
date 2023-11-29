@@ -1,0 +1,16 @@
+{% extends 'my_auth/basa.html' %}
+
+{% block title %}
+    UpdateProfile
+{% endblock %}
+
+{% block body %}
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Обновить</button>
+    </form>
+
+    <p><a href="{% url 'my_auth:about' %}">Информация о пользователе</a></p>
+
+{% endblock %}

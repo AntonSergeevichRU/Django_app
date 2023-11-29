@@ -1,0 +1,57 @@
+{% extends 'shop_app/basa.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% translate 'Products list' %}
+{% endblock %}
+
+{% block body %}
+    <h3>{% translate 'Product' %}:</h3>
+    {% if Products %}
+        <p>
+            {% blocktranslate count count_products=Products.all|length %}
+                There is only one product
+                {% plural %}
+                There are {{ count_products }} products
+            {% endblocktranslate %}
+        </p>
+        <div>
+            {% for product in Products %}
+                {% if perms.shop_app.view_product %}
+                    <lu><b><a href="{% url 'shop_app:products_details' pk=product.pk %}">{% translate 'Name' context 'product name' %}: {{ product.name }}</a></b></lu>
+                {% else %}
+                    <lu><b>{% translate 'Name' context 'product name' %}: {{ product.name }}</b></lu>
+                {% endif %}
+
+                <div>{% translate 'Price' %}: {{ product.price }}</div>
+
+                {% translate 'no discount' as no_discount %}
+                <div>{% translate 'Discount' %}: {% firstof product.discount no_discount %}</div>
+
+                {% if product.preview %}
+                    <img src="{{ product.preview.url }}" alt="{{ product.preview.name }}">
+                {% endif %}
+
+                <p></p>
+                <hr>
+
+            {% endfor %}
+
+        </div>
+
+        <div>
+        {% if perms.shop_app.add_product %}
+        <a href="{% url 'shop_app:create_product' %}">{% translate 'Create new product' %}</a>
+        </div>
+        {% endif %}
+        <p></p>
+    {% else %}
+        {% url 'shop_app:create_product' as create_product_url %}
+        {% blocktranslate %}
+            <h3>No products</h3>
+            <a href={{ create_product_url }}>Create a new one</a>
+        {% endblocktranslate %}
+
+    <p></p>
+    {% endif %}
+{% endblock %}

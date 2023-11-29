@@ -1,0 +1,25 @@
+{% extends 'shop_app/basa.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <h2>{{ title }}</h2>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">
+                Создать
+            </button>
+        </form>
+    </div>
+    <div>
+    <p><a href="{% url 'shop_app:product_update' %}">Перейти на страницу с продуктами</a></p>
+
+
+    </div>
+{% endblock %}

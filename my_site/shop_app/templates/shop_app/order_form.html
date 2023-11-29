@@ -1,0 +1,21 @@
+{% extends 'shop_app/basa.html' %}
+
+{% block title %}
+    Создание заказа
+{% endblock %}
+
+{% block body %}
+    <h2>Создание заказа</h2>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Создать</button>
+        </form>
+    </div>
+    <div>
+    <p>
+        <a href="{% url 'shop_app:order_list' %}">К списку заказов</a>
+    </p>
+    </div>
+{% endblock %}
